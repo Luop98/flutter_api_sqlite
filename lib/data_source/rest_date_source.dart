@@ -1,7 +1,4 @@
-
-
 import 'dart:convert';
-
 import '../models/user_location.dart';
 import '../models/user_name.dart';
 import '../models/user_picture.dart';
