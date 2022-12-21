@@ -99,3 +99,28 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
+
+class _LoadingCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Shimmer.fromColors(
+        baseColor: Colors.grey[400]!,
+        highlightColor: Colors.grey[300]!,
+        enabled: true,
+        child: ListTile(
+          leading: _ImageLoading(),
+          title: Container(
+            height: 15,
+            color: Colors.white,
+          ),
+          subtitle: Container(
+            height: 15,
+            color: Colors.white,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
