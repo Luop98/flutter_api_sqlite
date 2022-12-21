@@ -1,5 +1,12 @@
 
 
+import 'dart:convert';
+
+import '../models/user_location.dart';
+import '../models/user_name.dart';
+import '../models/user_picture.dart';
+import 'package:http/http.dart' as http;
+
 class RestDataSource {
   static const String _baseUrl = 'randomuser.me';
   static const String _name = '/api';
