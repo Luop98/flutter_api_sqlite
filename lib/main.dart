@@ -124,3 +124,18 @@ class _LoadingCard extends StatelessWidget {
   }
 }
 
+class _ImageLoading extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Shimmer.fromColors(
+      baseColor: Colors.grey[400]!,
+      highlightColor: Colors.grey[300]!,
+      enabled: true,
+      child: Container(
+        height: 70,
+        width: 70,
+        color: Colors.white,
+      ),
+    );
+  }
+}
