@@ -1,20 +1,101 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_api_sqlite/repository/user_repository.dart';
+import 'controllers/user_controller.dart';
+import 'package:get/get.dart';
+import 'package:shimmer/shimmer.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'data_source/rest_date_source.dart';
+import 'data_source/db_data_source.dart';
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-void main() {
+  final dbDataSource = await DbDataSource.init();
+  final userDataSource = RestDataSource();
+  final userRepository = UserRepository(userDataSource, dbDataSource);
+
+  Get.put(userRepository);
+
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
+      theme: ThemeData(
+        primarySwatch: Colors.deepPurple,
+      ),
       title: 'Flutter Demo',
-      
-      home: Text('hola mundo'),
+      debugShowCheckedModeBanner: false,
+      home: const MyHomePage(),
     );
   }
 }
 
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final controller = Get.put(UserController());
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Siasasdasdte'),
+        actions: [
+          IconButton(
+              onPressed: () async {
+                try {
+                  await controller.getUser();
+                } on Exception catch (e) {
+                  Get.snackbar("Error", e.toString());
+                }
+              },
+              icon: const Icon(Icons.add)),
+        ],
+      ),
+      body: Obx(() {
+        var itemCount = controller.users.length;
+        final isLoading = controller.loading.value;
+        if (isLoading) itemCount++;
+
+        return ListView.builder(
+          itemCount: itemCount,
+          itemBuilder: (_, index) {
+            if (isLoading) {
+              if (index == 0) return _LoadingCard();
+              index--;
+            }
+            final user = controller.users[index];
+            return Card(
+              child: ListTile(
+                leading: SizedBox(
+                  height: 70,
+                  width: 70,
+                  child: user.thumbnail == null
+                      ? const Icon(Icons.image)
+                      : CachedNetworkImage(
+                          imageUrl: user.thumbnail!,
+                          progressIndicatorBuilder: (_, __, ___) =>
+                              _ImageLoading(),
+                          errorWidget: (_, __, ___) => const Icon(Icons.error),
+                          fit: BoxFit.fitHeight,
+                        ),
+                ),
+                title: Text('${user.name} ${user.lastName}'),
+                subtitle: Text(user.city),
+                trailing: IconButton(
+                  onPressed: () => controller.deleteUser(user),
+                  icon: const Icon(Icons.delete),
+                ),
+              ),
+            );
+          },
+        );
+      }),
+    );
+  }
+}
