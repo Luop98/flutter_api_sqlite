@@ -20,7 +20,7 @@ dev_dependencies:
 
 
   get: ^4.6.5
-  http: ^0.13.5
+  http: ^0.13.5 
   shimmer: ^2.0.0
   sqflite: ^2.2.2
   cached_network_image: ^3.2.3
