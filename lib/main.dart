@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_api_sqlite/pages/entrance.dart';
 import 'package:flutter_api_sqlite/repository/user_repository.dart';
 import 'controllers/user_controller.dart';
 import 'package:get/get.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: const MyHomePage(),
+      home: const Entrance(),
     );
   }
 }
@@ -44,7 +45,7 @@ class MyHomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Siasasdasdte'),
+        title: const Text('Conociendo Personas'),
         actions: [
           IconButton(
               onPressed: () async {
