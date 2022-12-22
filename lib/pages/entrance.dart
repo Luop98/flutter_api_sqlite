@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_api_sqlite/main.dart';
+import 'package:flutter_api_sqlite/pages/perfil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Entrance extends StatelessWidget {
@@ -40,7 +41,17 @@ class Entrance extends StatelessWidget {
                     }));
                   },
                   
-                  child: Text("COMIENZA YA..."),
+                  child: Text("CONOCE YA..."),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute<Null>(
+                        builder: (BuildContext context) {
+                      return new Perfil();
+                    }));
+                  },
+                  
+                  child: Text("Perfil"),
                 ),
               ],
             ),
