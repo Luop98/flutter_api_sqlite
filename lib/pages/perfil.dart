@@ -13,7 +13,7 @@ class Perfil extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueGrey[800],
+      backgroundColor: Colors.red[200],
       body: SafeArea(
         child: Column(
           children: [
@@ -25,7 +25,7 @@ class Perfil extends StatelessWidget {
               "Roger Gutierrez",
               style: TextStyle(
                 fontSize: 40.0,
-                color: Colors.white,
+                color: Colors.black,
                 fontWeight: FontWeight.bold,
                 fontFamily: "Pacifico",
               ),
@@ -34,10 +34,10 @@ class Perfil extends StatelessWidget {
               "Aprendiz apasionado",
               style: TextStyle(
                   fontSize: 30,
-                  color: Colors.blueGrey[200],
+                  color: Colors.black54,
                   letterSpacing: 2.5,
                   fontWeight: FontWeight.bold,
-                  fontFamily: "Source Sans Pro"),
+                  fontFamily: "Source Sans Pro  "),
             ),
             SizedBox(
               height: 75,
