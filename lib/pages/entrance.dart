@@ -3,8 +3,43 @@ import 'package:flutter_api_sqlite/main.dart';
 import 'package:flutter_api_sqlite/pages/perfil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Entrance extends StatelessWidget {
+class Entrance extends StatefulWidget {
   const Entrance({super.key});
+
+  @override
+  State<Entrance> createState() => _EntranceState();
+}
+
+class _EntranceState extends State<Entrance> {
+
+  showMyAlert(){
+      showDialog(
+        context: context, 
+        builder: (BuildContext context ){
+          return AlertDialog(
+            backgroundColor: Colors.pink[50],
+            title: Text("❤️ YOUR SOUL MATE ❤️",
+            style: TextStyle(color: Colors.pink,
+            fontWeight: FontWeight.bold,
+            fontFamily: "Source Sans Pro" ),
+            ),
+            content: Text("YSM es un lugar lleno de posibilidades. Como la de formar conexiones que podrían llevar a algo más.💋💌",
+            style: TextStyle(color: Colors.black,
+            fontSize: 20.0,
+            fontWeight: FontWeight.bold,
+            fontFamily: "Source Sans Pro",
+           
+            ),
+            ),
+            actions: [
+              ElevatedButton(onPressed: (){
+                Navigator.pop(context);
+              }, child: Text("Aceptar"),)
+            ],
+          );
+      }
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +67,16 @@ class Entrance extends StatelessWidget {
 
                   ),
                 ),
+                Text(
+                  "YOUR SOUL MATE",
+                  style: GoogleFonts.lobster(
+                    fontSize: 45,
+                    color: Color.fromARGB(255, 0, 0, 0),
+                    fontWeight: FontWeight.bold,
+
+                  ),
+                ),
+
                 SizedBox(height: 10.0,),
                 ElevatedButton(
                   onPressed: () {
@@ -51,13 +96,22 @@ class Entrance extends StatelessWidget {
                     }));
                   },
                   
-                  child: Text("Perfil"),
+                  child: Text("Perfil",
+                ),
                 ),
               ],
             ),
           ),
         ],
       ),
+      
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.favorite),
+        onPressed: (){
+         showMyAlert();
+        },
+      ),
+
     );
   }
 }
