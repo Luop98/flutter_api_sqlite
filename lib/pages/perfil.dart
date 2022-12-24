@@ -13,10 +13,11 @@ class Perfil extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red[200],
+      backgroundColor: Colors.teal,
       body: SafeArea(
         child: Column(
           children: [
+              SizedBox(height: 50.0,),
             CircleAvatar(
               radius: 50,
               backgroundImage: AssetImage("assets/images/perfil.jpg"),

@@ -57,12 +57,12 @@ class _EntranceState extends State<Entrance> {
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children: [ 
                 Text(
                   "BIENVENIDO",
                   style: GoogleFonts.lobster(
                     fontSize: 45,
-                    color: Color.fromARGB(255, 0, 0, 0),
+                    color: Colors.black,
                     fontWeight: FontWeight.bold,
 
                   ),
@@ -71,7 +71,7 @@ class _EntranceState extends State<Entrance> {
                   "YOUR SOUL MATE",
                   style: GoogleFonts.lobster(
                     fontSize: 45,
-                    color: Color.fromARGB(255, 0, 0, 0),
+                    color: Colors.black54,
                     fontWeight: FontWeight.bold,
 
                   ),
