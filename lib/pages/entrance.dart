@@ -11,7 +11,7 @@ class Entrance extends StatefulWidget {
 }
 
 class _EntranceState extends State<Entrance> {
-
+  
   showMyAlert(){
       showDialog(
         context: context, 
@@ -36,8 +36,8 @@ class _EntranceState extends State<Entrance> {
                 Navigator.pop(context);
               }, child: Text("Aceptar"),)
             ],
-          );
-      }
+          );        
+      }     
     );
   }
 
@@ -53,7 +53,7 @@ class _EntranceState extends State<Entrance> {
                 fit: BoxFit.cover,
               ),
             ),
-          ),
+          ),          
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
